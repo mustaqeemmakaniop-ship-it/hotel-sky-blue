@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Sky Blue - Adajan, Surat | Clean & Comfortable Stays</title>
+  <meta name="description" content="Welcome to Hotel Sky Blue on Anand Mahal Road, Adajan, Surat (4th Floor, Scarlet Mall). Clean AC & Non-AC rooms, 24/7 front desk, terrace, free Wi-Fi, and secure parking.">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS (Standard, Clean, Responsive Library) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Minimal Custom Overrides (Zero Gradients, Solid Colors) -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-light" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+
+  <!-- ==========================================================================
+       Standard Bootstrap Navbar
+       ========================================================================== -->
+  <nav class="navbar navbar-expand-lg bg-white sticky-top border-bottom shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-primary" href="#home">
+        <span class="p-2 bg-primary text-white rounded"><i class="fa-solid fa-hotel"></i></span>
+        <span>Hotel Sky Blue</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#rooms">Rooms</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#facilities">Facilities</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-2">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="calculateBookingPrice()">
+              <i class="fa-brands fa-whatsapp me-1"></i> Book via WhatsApp
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       Hero Section (Clean, Solid Dark Overlay, No Gradients)
+       ========================================================================== -->
+  <section id="home" class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative text-center" style="z-index: 2; max-width: 800px;">
+      <span class="badge bg-primary text-uppercase px-3 py-2 mb-3 fw-bold">Adajan, Surat • Gujarat</span>
+      <h1 class="display-4 fw-bold text-white mb-3">A Comfortable & Budget Stay at Hotel Sky Blue</h1>
+      <p class="lead text-light mb-4">
+        Located on Anand Mahal Road, Adajan, Surat. Clean AC & Non-AC rooms, 24-hour front desk, free Wi-Fi, terrace, and secure parking at honest rates.
+      </p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="calculateBookingPrice()">
+          <i class="fa-brands fa-whatsapp me-1"></i> Book via WhatsApp
+        </button>
+        <a href="#rooms" class="btn btn-secondary btn-lg">
+          <i class="fa-solid fa-bed me-1"></i> View Rooms
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Quick Booking Bar
+       ========================================================================== -->
+  <div class="container booking-floating-box">
+    <div class="card border shadow-sm p-3 bg-white">
+      <div class="row g-2 align-items-end">
+        <div class="col-6 col-md-3">
+          <label class="form-label small fw-bold mb-1"><i class="fa-regular fa-calendar me-1 text-primary"></i> Check-In</label>
+          <input type="date" id="quickCheckin" class="form-control form-control-sm">
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="form-label small fw-bold mb-1"><i class="fa-regular fa-calendar me-1 text-primary"></i> Check-Out</label>
+          <input type="date" id="quickCheckout" class="form-control form-control-sm">
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label small fw-bold mb-1"><i class="fa-solid fa-bed me-1 text-primary"></i> Room Type</label>
+          <select id="quickRoom" class="form-select form-select-sm">
+            <option value="1200">Standard (No AC)</option>
+            <option value="2000" selected>Standard AC</option>
+            <option value="3200">Deluxe</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label small fw-bold mb-1"><i class="fa-solid fa-users me-1 text-primary"></i> Guests</label>
+          <select id="quickGuests" class="form-select form-select-sm">
+            <option value="1">1 Person</option>
+            <option value="2" selected>2 Persons</option>
+            <option value="3">3 Persons</option>
+            <option value="4">4 Persons</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-2">
+          <button class="btn btn-primary btn-sm w-100 py-2 fw-semibold" onclick="syncQuickBarAndOpen()">
+            <i class="fa-brands fa-whatsapp me-1"></i> Check & Book
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       About Section
+       ========================================================================== -->
+  <section id="about" class="py-5 section-warm-white">
+    <div class="container py-4">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="badge bg-primary-subtle text-primary fw-bold text-uppercase px-2 py-1 mb-2">About Hotel Sky Blue</span>
+          <h2 class="fw-bold mb-3">Comfort & Convenience in Adajan, Surat</h2>
+          <p class="text-muted">
+            Situated on the <strong>4th Floor of Scarlet Mall</strong> (Opposite Kalupur Bank, Near Prime Arcade) on Anand Mahal Road, <strong>Hotel Sky Blue</strong> provides a clean, peaceful, and budget-friendly stay in the heart of Adajan, Surat.
+          </p>
+          <p class="text-muted mb-4">
+            Ideal for business travelers, families, and visitors to Surat's famous textile and diamond centers. We are conveniently located just <strong>2.7 km from Surat city centre</strong> and <strong>13 km (8 miles) from Surat International Airport</strong>, offering comfortable rooms, elevator access, 24-hour reception, and free parking.
+          </p>
+
+          <div class="row g-3">
+            <div class="col-sm-6 d-flex align-items-center gap-3">
+              <span class="p-2 bg-primary-subtle rounded"><i class="fa-solid fa-wifi text-primary"></i></span>
+              <div>
+                <div class="fw-bold small">Free Fast Wi-Fi</div>
+                <div class="text-muted small">In all rooms & public areas</div>
+              </div>
+            </div>
+            <div class="col-sm-6 d-flex align-items-center gap-3">
+              <span class="p-2 bg-primary-subtle rounded"><i class="fa-solid fa-mountain-sun text-primary"></i></span>
+              <div>
+                <div class="fw-bold small">Open Terrace</div>
+                <div class="text-muted small">Fresh air & city views</div>
+              </div>
+            </div>
+            <div class="col-sm-6 d-flex align-items-center gap-3">
+              <span class="p-2 bg-primary-subtle rounded"><i class="fa-solid fa-clock text-primary"></i></span>
+              <div>
+                <div class="fw-bold small">24/7 Front Desk</div>
+                <div class="text-muted small">Round-the-clock check-in</div>
+              </div>
+            </div>
+            <div class="col-sm-6 d-flex align-items-center gap-3">
+              <span class="p-2 bg-primary-subtle rounded"><i class="fa-solid fa-square-parking text-primary"></i></span>
+              <div>
+                <div class="fw-bold small">Free Parking</div>
+                <div class="text-muted small">On-site private parking</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <img src="assets/images/deluxe-door.jpg" alt="Hotel Sky Blue Room" class="about-img shadow-sm border">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Rooms & Rates Section
+       ========================================================================== -->
+  <section id="rooms" class="py-5 section-soft-sky border-top border-bottom">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="badge bg-primary text-uppercase px-3 py-1 mb-2 fw-bold">Our Rooms</span>
+        <h2 class="fw-bold">Simple, Clean & Comfortable Rooms</h2>
+        <p class="text-muted">Choose from our comfortable non-AC, air-conditioned standard, and deluxe rooms.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Room 1: Standard Double Without AC -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border">
+            <img src="assets/images/standard-non-ac.jpg" alt="Standard Double Without AC" class="card-img-top card-img-room">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title fw-bold">Standard Double (Without AC)</h5>
+              <div class="room-card-price text-primary fw-bold fs-4 mb-2" data-price="1200">₹1,200 <span class="fs-6 text-muted fw-normal">/ night</span></div>
+              <p class="card-text text-muted small">Budget-friendly non-AC room with 1 Double Bed, ceiling fan, and private bathroom.</p>
+              <ul class="list-unstyled small text-muted border-top pt-2 mb-3">
+                <li><i class="fa-solid fa-check text-primary me-2"></i> 1 Double Bed (Sleeps 2 Guests)</li>
+                <li><i class="fa-solid fa-check text-primary me-2"></i> Ceiling Fan (Non-AC)</li>
+                <li><i class="fa-solid fa-check text-primary me-2"></i> Private Bathroom & Hot Shower</li>
+                <li><i class="fa-solid fa-check text-primary me-2"></i> Free High-Speed Wi-Fi</li>
+              </ul>
+              <button class="btn btn-primary btn-sm mt-auto w-100 fw-semibold" onclick="openBookingWithRoom('1200')">
+                <i class="fa-brands fa-whatsapp me-1"></i> Book on WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 2: Standard Double With AC -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border">
+            <img src="assets/images/standard-ac.jpg" alt="Standard Double Room" class="card-img-top card-img-room">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title fw-bold">Standard Double</h5>
+              <div class="room-card-price text-primary fw-bold fs-4 mb-2" data-price="2000">₹2,000 <span class="fs-6 text-muted fw-normal">/ night</span></div>
+              <p class="card-text text-muted small">Comfortable air-conditioned room with 1 Queen/Double Bed, smart TV, and workspace.</p>
+              <ul class="list-unstyled small text-muted border-top pt-2 mb-3">
+                <li><i class="fa-solid fa-check text-primary me-2"></i> 1 Queen Bed (Sleeps 2 Guests)</li>
+                <li><i class="fa-solid fa-check text-primary me-2"></i> Air Conditioning (AC)</li>
+                <li><i class="fa-solid fa-check text-primary me-2"></i> Flat-Screen Smart TV</li>
+                <li><i class="fa-solid fa-check text-primary me-2"></i> Free High-Speed Wi-Fi</li>
+              </ul>
+              <button class="btn btn-primary btn-sm mt-auto w-100 fw-semibold" onclick="openBookingWithRoom('2000')">
+                <i class="fa-brands fa-whatsapp me-1"></i> Book on WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 3: Deluxe Room -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border">
+            <img src="assets/images/deluxe-room.jpg" alt="Deluxe Room" class="card-img-top card-img-room">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title fw-bold">Deluxe Room</h5>
+              <div class="room-card-price text-primary fw-bold fs-4 mb-2" data-price="3200">₹3,200 <span class="fs-6 text-muted fw-normal">/ night</span></div>
+              <p class="card-text text-muted small">Spacious room featuring comfortable sofa seating, King bed, split AC, and wardrobe.</p>
+              <ul class="list-unstyled small text-muted border-top pt-2 mb-3">
+                <li><i class="fa-solid fa-check text-primary me-2"></i> 1 King Bed & City View</li>
+                <li><i class="fa-solid fa-check text-primary me-2"></i> Air Conditioning (AC)</li>
+                <li><i class="fa-solid fa-check text-primary me-2"></i> Sofa Seating & Wardrobe</li>
+                <li><i class="fa-solid fa-check text-primary me-2"></i> Flat-screen TV & Free Wi-Fi</li>
+              </ul>
+              <button class="btn btn-primary btn-sm mt-auto w-100 fw-semibold" onclick="openBookingWithRoom('3200')">
+                <i class="fa-brands fa-whatsapp me-1"></i> Book on WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel Guest & Couple Policy Notice -->
+      <div class="alert bg-white border shadow-sm mt-4 p-3 d-flex align-items-center gap-3">
+        <span class="p-2 bg-danger-subtle text-danger rounded"><i class="fa-solid fa-circle-exclamation fs-5"></i></span>
+        <div class="small">
+          <strong class="text-dark d-block mb-1">Important Hotel Policy & House Rules:</strong>
+          <span class="text-dark fw-semibold">• <span class="text-danger">Unmarried couples are strictly not allowed.</span> Only families, married couples, and corporate/solo travelers are permitted.</span><br>
+          <span class="text-muted">• Original Government photo ID (Aadhaar, Passport, or Driving License) is mandatory for all adult guests at check-in.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Facilities Section
+       ========================================================================== -->
+  <section id="facilities" class="py-5 section-warm-white">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="badge bg-primary-subtle text-primary fw-bold text-uppercase px-2 py-1 mb-2">Amenities</span>
+        <h2 class="fw-bold">Hotel Facilities & Services</h2>
+        <p class="text-muted">Simple conveniences to make your vacation easy and stress-free.</p>
+      </div>
+
+      <div class="row g-3 g-lg-4">
+        <div class="col-6 col-lg-3">
+          <div class="card h-100 text-center p-3 border shadow-sm">
+            <div class="text-primary fs-2 mb-2"><i class="fa-solid fa-mountain-sun"></i></div>
+            <h6 class="fw-bold">Open Terrace</h6>
+            <p class="text-muted small mb-0">Open terrace space for guests to relax with fresh air and city views.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card h-100 text-center p-3 border shadow-sm">
+            <div class="text-primary fs-2 mb-2"><i class="fa-solid fa-bell-concierge"></i></div>
+            <h6 class="fw-bold">24/7 Front Desk</h6>
+            <p class="text-muted small mb-0">Helpful reception staff available day and night for easy check-in.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card h-100 text-center p-3 border shadow-sm">
+            <div class="text-primary fs-2 mb-2"><i class="fa-solid fa-snowflake"></i></div>
+            <h6 class="fw-bold">Air Conditioning</h6>
+            <p class="text-muted small mb-0">Quiet individual AC units in every guest room and lounge.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card h-100 text-center p-3 border shadow-sm">
+            <div class="text-primary fs-2 mb-2"><i class="fa-solid fa-square-parking"></i></div>
+            <h6 class="fw-bold">Free Parking</h6>
+            <p class="text-muted small mb-0">Safe private parking for all cars, SUVs, and bikes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Photo Gallery
+       ========================================================================== -->
+  <section id="gallery" class="py-5 section-soft-sky border-top border-bottom">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="badge bg-primary text-uppercase px-3 py-1 mb-2 fw-bold">Photo Tour</span>
+        <h2 class="fw-bold">Photo Gallery</h2>
+        <p class="text-muted">A look inside our rooms, attached bathrooms, and entrance at Scarlet Mall, Adajan, Surat.</p>
+      </div>
+
+      <div class="row g-2 g-sm-3">
+        <div class="col-6 col-md-4">
+          <img src="assets/images/deluxe-room.jpg" alt="Deluxe Room" class="gallery-img border">
+        </div>
+        <div class="col-6 col-md-4">
+          <img src="assets/images/deluxe-room-seating.jpg" alt="Deluxe Room Seating & TV" class="gallery-img border">
+        </div>
+        <div class="col-6 col-md-4">
+          <img src="assets/images/standard-ac.jpg" alt="Standard Double with AC" class="gallery-img border">
+        </div>
+        <div class="col-6 col-md-4">
+          <img src="assets/images/standard-non-ac.jpg" alt="Standard Double without AC" class="gallery-img border">
+        </div>
+        <div class="col-6 col-md-4">
+          <img src="assets/images/bathroom.jpg" alt="Clean Bathroom" class="gallery-img border">
+        </div>
+        <div class="col-6 col-md-4">
+          <img src="assets/images/room-405.jpg" alt="Room Entrance" class="gallery-img border">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Contact Section
+       ========================================================================== -->
+  <section id="contact" class="py-5 section-warm-white border-top">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="badge bg-primary-subtle text-primary fw-bold text-uppercase px-2 py-1 mb-2">Location & Inquiry</span>
+        <h2 class="fw-bold">Contact Hotel Sky Blue</h2>
+        <p class="text-muted">Feel free to message or visit us anytime.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card h-100 p-4 border shadow-sm">
+            <h5 class="fw-bold mb-4">Hotel Contact & Location Details</h5>
+            <div class="mb-3 d-flex align-items-start gap-3">
+              <span class="p-2 bg-primary-subtle rounded"><i class="fa-solid fa-location-dot text-primary"></i></span>
+              <div>
+                <strong>Address:</strong>
+                <p class="text-muted small mb-0">4th Floor, Scarlet Mall, Near Prime Arcade, Opp. Kalupur Bank, Anand Mahal Road, Adajan, Surat, Gujarat 395009, India</p>
+              </div>
+            </div>
+            <div class="mb-3 d-flex align-items-start gap-3">
+              <span class="p-2 bg-primary-subtle rounded"><i class="fa-solid fa-route text-primary"></i></span>
+              <div>
+                <strong>Key Distances:</strong>
+                <p class="text-muted small mb-0">• 2.7 km from Surat City Centre & Tapi Riverfront</p>
+                <p class="text-muted small mb-0">• 13 km (8.1 miles) from Surat International Airport (STV)</p>
+                <p class="text-muted small mb-0">• ~6.5 km from Surat Railway Station</p>
+              </div>
+            </div>
+            <div class="mb-3 d-flex align-items-start gap-3">
+              <span class="p-2 bg-primary-subtle rounded"><i class="fa-solid fa-clock text-primary"></i></span>
+              <div>
+                <strong>Check-In / Check-Out Times:</strong>
+                <p class="text-muted small mb-0">Check-in: From 12:00 PM (Noon) | Check-out: Until 11:30 AM</p>
+              </div>
+            </div>
+            <div class="mb-3 d-flex align-items-start gap-3">
+              <span class="p-2 bg-primary-subtle rounded"><i class="fa-solid fa-phone text-primary"></i></span>
+              <div>
+                <strong>Call Front Desk:</strong>
+                <p class="text-muted small mb-0">
+                  <a href="tel:+919824121554" class="text-decoration-none text-dark fw-bold">+91 98241 21554</a>
+                </p>
+              </div>
+            </div>
+            <div class="mb-3 d-flex align-items-start gap-3">
+              <span class="p-2 bg-primary-subtle rounded"><i class="fa-brands fa-whatsapp text-primary fs-5"></i></span>
+              <div>
+                <strong>WhatsApp Booking:</strong>
+                <p class="text-muted small mb-0">
+                  <a href="https://wa.me/919824121554" target="_blank" rel="noopener" class="text-decoration-none text-primary fw-bold">+91 98241 21554</a>
+                </p>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3">
+              <span class="p-2 bg-primary-subtle rounded"><i class="fa-solid fa-bell-concierge text-primary"></i></span>
+              <div>
+                <strong>Reception:</strong>
+                <p class="text-muted small mb-0">24-Hour Front Desk & Daily Housekeeping</p>
+              </div>
+            </div>
+            <div class="mt-3 d-flex align-items-start gap-3">
+              <span class="p-2 bg-danger-subtle rounded"><i class="fa-solid fa-ban text-danger"></i></span>
+              <div>
+                <strong>Couple Policy:</strong>
+                <p class="text-muted small mb-0"><strong class="text-danger">Unmarried couples are strictly not allowed.</strong> Valid ID and family/marriage verification required for couples.</p>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-top">
+              <a href="https://www.booking.com/hotel/in/sky-blue-surat.html" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm w-100 fw-semibold">
+                <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> View Our Verified Booking.com Listing
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card h-100 p-4 border shadow-sm d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="fw-bold mb-2">Connect With Us Directly</h5>
+              <p class="text-muted small mb-4">
+                Have questions or need an instant room booking? Reach out to us directly through Call, WhatsApp, or Instagram.
+              </p>
+
+              <div class="d-flex flex-column gap-3 mb-3">
+                <!-- 1. Call Button (Primary Teal Green) -->
+                <a href="tel:+919824121554" class="btn btn-primary btn-lg d-flex align-items-center justify-content-center gap-2 fw-semibold">
+                  <i class="fa-solid fa-phone"></i>
+                  <span>Call: +91 98241 21554</span>
+                </a>
+
+                <!-- 2. WhatsApp Button (Secondary Soft Sky Blue) -->
+                <a href="https://wa.me/919824121554?text=Hello%20Hotel%20Sky%20Blue,%20I%20would%20like%20to%20inquire%20about%20room%20availability." target="_blank" rel="noopener" class="btn btn-secondary btn-lg d-flex align-items-center justify-content-center gap-2 fw-semibold">
+                  <i class="fa-brands fa-whatsapp fs-5 text-primary"></i>
+                  <span>Chat on WhatsApp (+91 98241 21554)</span>
+                </a>
+
+                <!-- 3. Instagram Button (Secondary Soft Sky Blue) -->
+                <a href="https://www.instagram.com/hotel.sky.blue/" target="_blank" rel="noopener" class="btn btn-secondary btn-lg d-flex align-items-center justify-content-center gap-2 fw-semibold">
+                  <i class="fa-brands fa-instagram fs-5 text-primary"></i>
+                  <span>Follow @hotel.sky.blue on Instagram</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="p-3 bg-light rounded border text-center small text-muted">
+              <i class="fa-solid fa-clock-rotate-left text-primary me-1"></i> Available 24/7 for booking queries, directions & room assistance.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Footer (Deep Teal: #20343B)
+       ========================================================================== -->
+  <footer class="py-4 border-top small" style="background-color: #20343B;">
+    <div class="container">
+      <div class="row g-4 mb-3">
+        <div class="col-md-6">
+          <h6 class="fw-bold text-white mb-2"><i class="fa-solid fa-hotel me-2" style="color: #287F86;"></i>Hotel Sky Blue</h6>
+          <p class="small mb-0" style="color: #DCEFF7; max-width: 420px;">
+            A clean, comfortable, and budget-friendly hotel in Adajan, Surat. Located on 4th Floor, Scarlet Mall, Anand Mahal Road. 24/7 front desk, AC rooms, free Wi-Fi, and terrace.
+          </p>
+        </div>
+        <div class="col-md-3">
+          <h6 class="fw-bold text-white mb-2">Quick Links</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="#home" class="text-secondary text-decoration-none">Home</a></li>
+            <li><a href="#about" class="text-secondary text-decoration-none">About</a></li>
+            <li><a href="#rooms" class="text-secondary text-decoration-none">Rooms</a></li>
+            <li><a href="#facilities" class="text-secondary text-decoration-none">Facilities</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h6 class="fw-bold text-white mb-2">Assistance & Booking</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="tel:+919824121554" class="text-secondary text-decoration-none"><i class="fa-solid fa-phone me-1" style="color: #287F86;"></i> Call: +91 98241 21554</a></li>
+            <li><a href="https://wa.me/919824121554" target="_blank" rel="noopener" class="text-secondary text-decoration-none"><i class="fa-brands fa-whatsapp me-1" style="color: #287F86;"></i> WhatsApp: +91 98241 21554</a></li>
+            <li><a href="https://www.instagram.com/hotel.sky.blue/" target="_blank" rel="noopener" class="text-secondary text-decoration-none"><i class="fa-brands fa-instagram me-1" style="color: #287F86;"></i> @hotel.sky.blue</a></li>
+            <li><button type="button" class="btn btn-link text-secondary text-decoration-none p-0 border-0" data-bs-toggle="modal" data-bs-target="#manageBookingModal">Find Booking Status</button></li>
+            <li><span class="text-secondary">Adajan, Surat, Gujarat</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-top pt-3 text-secondary d-flex justify-content-between flex-wrap gap-2" style="border-color: rgba(221, 228, 232, 0.2) !important;">
+        <span>© 2026 Hotel Sky Blue. All rights reserved.</span>
+        <span>Simple, Clean & Reliable Hospitality</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Bootstrap Modal: Direct 1-Step Booking
+       ========================================================================== -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content border shadow">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="bookingModalLabel"><i class="fa-brands fa-whatsapp text-primary me-2"></i>Book Room via WhatsApp</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <!-- Form Pane -->
+          <div id="bookingFormPane">
+            <form onsubmit="handleBookingSubmit(event)">
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <label class="form-label small fw-bold mb-1">Check-In *</label>
+                  <input type="date" id="modalCheckin" class="form-control form-control-sm" required onchange="calculateBookingPrice()">
+                </div>
+                <div class="col-6">
+                  <label class="form-label small fw-bold mb-1">Check-Out *</label>
+                  <input type="date" id="modalCheckout" class="form-control form-control-sm" required onchange="calculateBookingPrice()">
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold mb-1">Select Room *</label>
+                <select id="modalRoom" class="form-select form-select-sm" onchange="calculateBookingPrice()">
+                  <option value="1200" data-name="Standard Double (Without AC)">Standard Double (Without AC) (₹1,200 / night)</option>
+                  <option value="2000" data-name="Standard Double" selected>Standard Double (₹2,000 / night)</option>
+                  <option value="3200" data-name="Deluxe Room">Deluxe Room (₹3,200 / night)</option>
+                </select>
+              </div>
+
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <label class="form-label small fw-bold mb-1">Guests</label>
+                  <select id="modalGuests" class="form-select form-select-sm">
+                    <option value="1">1 Person</option>
+                    <option value="2" selected>2 Persons</option>
+                    <option value="3">3 Persons</option>
+                    <option value="4">4 Persons</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label class="form-label small fw-bold mb-1">Your Name *</label>
+                  <input type="text" id="modalName" class="form-control form-control-sm" placeholder="e.g. Rahul Sharma" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold mb-1">Customer WhatsApp / Mobile No. *</label>
+                <div class="input-group input-group-sm">
+                  <span class="input-group-text bg-light text-muted fw-bold">+91</span>
+                  <input type="tel" id="modalPhone" class="form-control" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
+                </div>
+                <div class="form-text text-muted" style="font-size: 11px;">Hotel desk verification aur booking voucher ke liye.</div>
+              </div>
+
+              <!-- Price Summary Card -->
+              <div class="card bg-light border p-3 mb-3">
+                <div class="d-flex justify-content-between small text-muted mb-2">
+                  <span id="modalRoomLabel">Standard Double (2 nights)</span>
+                  <span id="modalRoomCost" class="fw-semibold text-dark">₹4,000</span>
+                </div>
+                <div class="d-flex justify-content-between pt-2 border-top fw-bold fs-6">
+                  <span>Total Estimated Price:</span>
+                  <span id="modalTotalCost" class="text-primary fs-5">₹4,000</span>
+                </div>
+                <div class="small text-muted mt-1"><i class="fa-solid fa-circle-check text-primary me-1"></i> Pay at Hotel • Free cancellation anytime</div>
+              </div>
+
+              <!-- Hotel Policy Alert for Couples -->
+              <div class="alert alert-light border border-danger-subtle p-2 mb-3 d-flex align-items-center gap-2 text-start">
+                <span class="p-1 px-2 bg-danger-subtle text-danger rounded fw-bold small"><i class="fa-solid fa-ban me-1"></i>Policy</span>
+                <div class="text-danger small fw-semibold" style="font-size: 11.5px; line-height: 1.35;">
+                  Unmarried couples are strictly not allowed. Valid Government photo ID required at check-in.
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold d-flex align-items-center justify-content-center gap-2">
+                <i class="fa-brands fa-whatsapp fs-5"></i>
+                <span>Send Booking to Hotel WhatsApp</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Success Pane: Digital Voucher -->
+          <div id="bookingSuccessPane" style="display: none;" class="text-center">
+            <div class="text-primary fs-1 mb-2"><i class="fa-solid fa-circle-check"></i></div>
+            <h5 class="fw-bold mb-1">Booking Confirmed!</h5>
+            <p class="text-muted small mb-3">
+              Booking request <strong>Hotel WhatsApp (+91 98241 21554)</strong> ko bhej di gayi hai. Aap apna voucher yahan se <strong>Save</strong> kar sakte hain:
+            </p>
+
+            <!-- Prominent Save Voucher button for Customer -->
+            <div class="mb-3">
+              <button type="button" class="btn btn-primary btn-lg w-100 fw-bold d-flex align-items-center justify-content-center gap-2 shadow-sm" onclick="window.print()">
+                <i class="fa-solid fa-floppy-disk fs-5"></i>
+                <span>Save / Download Voucher</span>
+              </button>
+            </div>
+
+            <!-- Clean & Simple Voucher Slip -->
+            <div class="card bg-white border rounded-3 text-start p-3 p-sm-4 mb-3 shadow-sm voucher-card">
+              <!-- Header -->
+              <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="p-2 bg-primary text-white rounded"><i class="fa-solid fa-hotel"></i></div>
+                  <div>
+                    <h6 class="fw-bold text-dark mb-0">Hotel Sky Blue</h6>
+                    <small class="text-muted">Adajan, Surat</small>
+                  </div>
+                </div>
+                <div class="text-end">
+                  <span class="badge bg-primary-subtle text-primary border fw-semibold px-2 py-1 mb-1">Confirmed</span>
+                  <div class="fw-bold text-primary font-monospace small" id="voucherRef"></div>
+                </div>
+              </div>
+
+              <!-- Details Grid -->
+              <div class="row g-3 mb-3">
+                <div class="col-6">
+                  <span class="text-muted text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.5px;">Guest Name</span>
+                  <div class="fw-bold text-dark fs-6 mt-1" id="voucherName"></div>
+                </div>
+                <div class="col-6">
+                  <span class="text-muted text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.5px;">Customer Phone</span>
+                  <div class="fw-bold text-dark fs-6 mt-1" id="voucherPhone"></div>
+                </div>
+                <div class="col-6">
+                  <span class="text-muted text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.5px;">Room Type</span>
+                  <div class="fw-bold text-dark fs-6 mt-1" id="voucherRoom"></div>
+                </div>
+                <div class="col-6">
+                  <span class="text-muted text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.5px;">Guests</span>
+                  <div class="fw-bold text-dark fs-6 mt-1" id="voucherGuests"></div>
+                </div>
+                <div class="col-6">
+                  <span class="text-muted text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.5px;">Check-In</span>
+                  <div class="fw-bold text-dark mt-1" id="voucherCheckin"></div>
+                  <small class="text-muted" style="font-size: 11px;">From 12:00 PM</small>
+                </div>
+                <div class="col-6">
+                  <span class="text-muted text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.5px;">Check-Out</span>
+                  <div class="fw-bold text-dark mt-1" id="voucherCheckout"></div>
+                  <small class="text-muted" style="font-size: 11px;">Until 11:30 AM</small>
+                </div>
+              </div>
+
+              <!-- Price Box -->
+              <div class="bg-light rounded-3 p-3 d-flex justify-content-between align-items-center border mb-3">
+                <div>
+                  <span class="text-muted small d-block">Estimated Total Amount</span>
+                  <small class="text-primary fw-semibold"><i class="fa-solid fa-circle-check me-1"></i>Pay at Hotel (Cash / UPI)</small>
+                </div>
+                <div class="fs-4 fw-bold text-primary" id="voucherTotal"></div>
+              </div>
+
+              <!-- Hotel Policy Note on Voucher -->
+              <div class="p-2 mb-3 bg-light border border-danger-subtle rounded text-danger small" style="font-size: 11px; line-height: 1.35;">
+                <i class="fa-solid fa-ban me-1"></i><strong>Policy Note:</strong> Unmarried couples are strictly not allowed. Valid Government photo ID is required for all guests at check-in.
+              </div>
+
+              <!-- Footer with Address and Contact -->
+              <div class="text-muted pt-2 border-top" style="font-size: 11.5px; line-height: 1.5;">
+                <div class="mb-1"><i class="fa-solid fa-location-dot text-primary me-1"></i> 4th Floor, Scarlet Mall, Anand Mahal Rd, Adajan, Surat</div>
+                <div><i class="fa-solid fa-phone text-primary me-1"></i> +91 98241 21554 &nbsp;|&nbsp; <i class="fa-brands fa-whatsapp text-primary me-1"></i> WhatsApp: +91 98241 21554</div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-secondary btn-sm px-3" onclick="window.print()"><i class="fa-solid fa-print me-1"></i> Print Receipt</button>
+              <button class="btn btn-outline-primary btn-sm px-3" data-bs-dismiss="modal">Close</button>
+            </div>
+            <div class="mt-2 text-muted" style="font-size: 11px;">
+              Hotel WhatsApp open nahi hua? <a id="waDirectFallback" href="#" target="_blank" class="text-primary fw-bold text-decoration-underline">Yahan click karke hotel ko bhejein</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Bootstrap Modal: Find / Manage Booking
+       ========================================================================== -->
+  <div class="modal fade" id="manageBookingModal" tabindex="-1" aria-labelledby="manageBookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content border shadow">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="manageBookingModalLabel">Find Your Booking</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="text-muted small mb-3">Enter your <strong>Booking Reference (e.g. SB-123456)</strong> or Email address:</p>
+          <form onsubmit="handleSearchBooking(event)" class="d-flex gap-2 mb-3">
+            <input type="text" id="searchQuery" class="form-control form-control-sm" placeholder="Booking Ref or Email" required>
+            <button type="submit" class="btn btn-primary btn-sm px-3">Search</button>
+          </form>
+          <div id="searchResults"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Mobile Sticky Quick Action Bar (Mobile Only - 1-Tap Call, WhatsApp, Book)
+       ========================================================================== -->
+  <div class="fixed-bottom bg-white border-top shadow-lg p-2 d-md-none" style="z-index: 1040;">
+    <div class="row g-2">
+      <div class="col-4">
+        <a href="tel:+919824121554" class="btn btn-secondary btn-sm w-100 d-flex flex-column align-items-center justify-content-center py-1">
+          <i class="fa-solid fa-phone fs-6 mb-1 text-primary"></i>
+          <span class="fw-bold" style="font-size: 11px;">Call</span>
+        </a>
+      </div>
+      <div class="col-4">
+        <a href="https://wa.me/919824121554?text=Hello%20Hotel%20Sky%20Blue,%20I%20would%20like%20to%20inquire%20about%20room%20availability." target="_blank" rel="noopener" class="btn btn-secondary btn-sm w-100 d-flex flex-column align-items-center justify-content-center py-1">
+          <i class="fa-brands fa-whatsapp fs-6 mb-1 text-primary"></i>
+          <span class="fw-bold" style="font-size: 11px;">WhatsApp</span>
+        </a>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-primary btn-sm w-100 d-flex flex-column align-items-center justify-content-center py-1" data-bs-toggle="modal" data-bs-target="#bookingModal" onclick="calculateBookingPrice()">
+          <i class="fa-solid fa-calendar-check fs-6 mb-1"></i>
+          <span class="fw-bold" style="font-size: 11px;">Book Now</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3.3 Bundle JS (Handles modals, collapses, and dropdowns natively) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Clean, Lightweight Application Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>

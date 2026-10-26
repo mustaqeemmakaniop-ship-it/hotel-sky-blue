@@ -1,0 +1,466 @@
+/* ==========================================================================
+   Hotel Sky Blue - Natural, Family-Friendly Theme
+   Exact Colour Palette (Solid Colours Only - Strictly Zero Gradients):
+   - Primary Teal Green:        #287F86
+   - Main Warm White Background:#FAFCFD
+   - Soft Sky Blue Accent:      #DCEFF7
+   - Dark Slate Text:           #263746
+   - Pure White Cards:          #FFFFFF
+   - Deep Teal Footer:          #20343B
+   - Light Borders:             #DDE4E8
+   ========================================================================== */
+
+:root {
+  --primary-teal: #287F86;
+  --primary-teal-hover: #20676D;
+  --warm-white: #FAFCFD;
+  --soft-sky-blue: #DCEFF7;
+  --soft-sky-blue-hover: #C5E4F2;
+  --dark-slate: #263746;
+  --pure-white: #FFFFFF;
+  --deep-teal: #20343B;
+  --light-border: #DDE4E8;
+  --slate-muted: #536779;
+
+  /* Bootstrap 5 Overrides */
+  --bs-primary: #287F86;
+  --bs-primary-rgb: 40, 127, 134;
+  --bs-link-color: #287F86;
+  --bs-link-hover-color: #20676D;
+  --bs-border-color: #DDE4E8;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--warm-white) !important;
+  color: var(--dark-slate);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* Headings and Typography */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: var(--dark-slate) !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.text-dark {
+  color: var(--dark-slate) !important;
+}
+
+.text-muted {
+  color: var(--slate-muted) !important;
+}
+
+.text-primary {
+  color: var(--primary-teal) !important;
+}
+
+.bg-light {
+  background-color: var(--warm-white) !important;
+}
+
+.bg-white {
+  background-color: var(--pure-white) !important;
+}
+
+/* Section Backgrounds */
+.section-warm-white {
+  background-color: var(--warm-white) !important;
+}
+
+.section-soft-sky {
+  background-color: var(--soft-sky-blue) !important;
+}
+
+/* Light Borders across components */
+.border,
+.border-top,
+.border-bottom,
+.border-start,
+.border-end {
+  border-color: var(--light-border) !important;
+}
+
+/* Navbar: Clean White with Teal Green Accents & Dark Slate Links */
+.navbar {
+  background-color: var(--pure-white) !important;
+  border-bottom: 1px solid var(--light-border) !important;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.navbar-brand {
+  color: var(--primary-teal) !important;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.navbar-nav .nav-link {
+  color: var(--dark-slate) !important;
+  font-size: 0.95rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  transition: color 0.15s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link.active {
+  color: var(--primary-teal) !important;
+}
+
+/* Primary Buttons: Teal Green with White Text */
+.btn-primary {
+  background-color: var(--primary-teal) !important;
+  border-color: var(--primary-teal) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: none;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--primary-teal-hover) !important;
+  border-color: var(--primary-teal-hover) !important;
+  color: #ffffff !important;
+}
+
+/* Secondary Buttons: Soft Sky Blue with Dark Slate Text */
+.btn-secondary,
+.btn-soft-sky {
+  background-color: var(--soft-sky-blue) !important;
+  border-color: var(--light-border) !important;
+  color: var(--dark-slate) !important;
+  font-weight: 600;
+  box-shadow: none;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-soft-sky:hover,
+.btn-soft-sky:focus {
+  background-color: var(--soft-sky-blue-hover) !important;
+  border-color: #c0d8e6 !important;
+  color: var(--dark-slate) !important;
+}
+
+/* Outline Buttons */
+.btn-outline-primary {
+  color: var(--primary-teal) !important;
+  border-color: var(--primary-teal) !important;
+  background-color: transparent !important;
+  font-weight: 600;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  background-color: var(--primary-teal) !important;
+  border-color: var(--primary-teal) !important;
+  color: #ffffff !important;
+}
+
+/* Cards: Pure White with Light Borders & Subtle Shadow */
+.card {
+  background-color: var(--pure-white) !important;
+  border: 1px solid var(--light-border) !important;
+  border-radius: 0.5rem;
+}
+
+/* Badges */
+.badge.bg-primary {
+  background-color: var(--primary-teal) !important;
+  color: #ffffff !important;
+}
+
+.badge.bg-primary-subtle,
+.bg-primary-subtle {
+  background-color: var(--soft-sky-blue) !important;
+  color: var(--primary-teal) !important;
+}
+
+/* Price Display: Teal Green */
+.room-card-price {
+  color: var(--primary-teal) !important;
+}
+
+/* Form Fields: Pure White Background, Light Borders, Clear Focus States */
+.form-control,
+.form-select {
+  background-color: var(--pure-white) !important;
+  border: 1px solid var(--light-border) !important;
+  color: var(--dark-slate) !important;
+  border-radius: 0.375rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--pure-white) !important;
+  border-color: var(--primary-teal) !important;
+  color: var(--dark-slate) !important;
+  box-shadow: 0 0 0 0.2rem rgba(40, 127, 134, 0.22) !important;
+  outline: none !important;
+}
+
+.input-group-text {
+  background-color: var(--soft-sky-blue) !important;
+  border: 1px solid var(--light-border) !important;
+  color: var(--dark-slate) !important;
+  font-weight: 600;
+}
+
+/* Hero Section with Solid Deep Teal Overlay */
+.hero-banner {
+  position: relative;
+  background: var(--deep-teal) url('../assets/images/deluxe-room.jpg') center/cover no-repeat;
+  padding: 6.5rem 0 5.5rem;
+  color: #ffffff;
+}
+
+.hero-banner h1 {
+  color: #ffffff !important;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(32, 52, 59, 0.82); /* Solid Deep Teal #20343B with opacity */
+}
+
+/* Floating Booking Box */
+.booking-floating-box {
+  margin-top: -2.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Image Heights */
+.card-img-room {
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: calc(0.5rem - 1px);
+  border-top-right-radius: calc(0.5rem - 1px);
+}
+
+.gallery-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.375rem;
+  border: 1px solid var(--light-border);
+}
+
+.about-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 1px solid var(--light-border);
+}
+
+/* Footer: Deep Teal (#20343B) with White & Soft Sky Blue Text */
+footer {
+  background-color: var(--deep-teal) !important;
+  color: #ffffff !important;
+  border-top: 1px solid rgba(221, 228, 232, 0.2) !important;
+}
+
+footer h6 {
+  color: #ffffff !important;
+}
+
+footer p,
+footer li,
+footer span {
+  color: #e5f1f7 !important;
+}
+
+footer a.text-secondary {
+  color: var(--soft-sky-blue) !important;
+  transition: color 0.15s ease-in-out;
+}
+
+footer a.text-secondary:hover {
+  color: #ffffff !important;
+}
+
+/* Modals */
+.modal-content {
+  background-color: var(--pure-white) !important;
+  border: 1px solid var(--light-border) !important;
+  border-radius: 0.6rem;
+}
+
+.modal-header {
+  background-color: var(--warm-white) !important;
+  border-bottom: 1px solid var(--light-border) !important;
+}
+
+/* Mobile Responsive Optimizations (< 768px) */
+@media (max-width: 767.98px) {
+  body {
+    padding-bottom: 65px; /* Prevent sticky mobile action bar from covering content */
+  }
+
+  /* Prevent iOS Safari automatic input zoom */
+  input, select, textarea, .form-control, .form-select {
+    font-size: 16px !important;
+  }
+
+  /* Hero Section Mobile */
+  .hero-banner {
+    padding: 4.25rem 1rem 3.25rem;
+  }
+
+  .hero-banner h1 {
+    font-size: 1.85rem;
+    line-height: 1.25;
+  }
+
+  .hero-banner p.lead {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-banner .btn-lg {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  /* Quick Bar on Mobile */
+  .booking-floating-box {
+    margin-top: -1.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  /* Image heights for mobile screens */
+  .about-img {
+    height: 240px;
+  }
+
+  .gallery-img {
+    height: 140px;
+  }
+
+  .card-img-room {
+    height: 190px;
+  }
+}
+
+/* ==========================================================================
+   Print Styles: Strictly 1 Single Official Voucher Page (No Blank Pages)
+   ========================================================================== */
+@media print {
+  /* 1. Remove all website background sections and footers completely from flow */
+  nav,
+  header,
+  section,
+  footer,
+  .booking-floating-box,
+  .fixed-bottom,
+  .modal-backdrop,
+  #manageBookingModal {
+    display: none !important;
+  }
+
+  /* 2. Reset html & body layout to eliminate extra page heights */
+  html, body, body.modal-open {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #263746 !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* 3. Static Modal Layout */
+  #bookingModal {
+    position: static !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  #bookingModal .modal-dialog {
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  #bookingModal .modal-content {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  #bookingModal .modal-body {
+    padding: 0 !important;
+  }
+
+  /* 4. Hide all UI controls, headers, buttons & instruction texts */
+  .modal-header,
+  .modal-footer,
+  #bookingFormPane,
+  #bookingSuccessPane > *:not(.voucher-card),
+  .btn {
+    display: none !important;
+  }
+
+  #bookingSuccessPane {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* 5. Clean, Professional 1-Page Voucher Ticket */
+  .voucher-card {
+    display: block !important;
+    visibility: visible !important;
+    border: 2px solid #287F86 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 620px !important;
+    margin: 0 auto !important;
+    padding: 24px !important;
+    background: #ffffff !important;
+    color: #263746 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* 6. Page Rule: Auto Size, Zero extra pages */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 10mm;
+  }
+}
